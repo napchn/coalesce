@@ -5,14 +5,11 @@
 #include "ctrltab.h"
 
 CtrlTab::CtrlTab(QWidget *parent)
-	: QWidget(parent)
+    : QWidget(parent)
 {
-	RenderUI();
+    RenderUI();
 }
 
-CtrlTab::~CtrlTab()
-{}
+CtrlTab::~CtrlTab() {}
 
-void CtrlTab::RenderUI()
-{
-}
+void CtrlTab::RenderUI() {}

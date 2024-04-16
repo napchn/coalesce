@@ -1,12 +1,18 @@
-#pragma once
+#ifndef CMPNT_NAVTAB_H
+#define CMPNT_NAVTAB_H
 
-#include <QObject>
+#include <QWidget>
 
-class NavTab  : public QObject
+class NavTab : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	NavTab(QWidget *parent);
-	~NavTab();
+    NavTab(QWidget *parent);
+    ~NavTab();
+
+private:
+    void RenderUI();
 };
+
+#endif // CMPNT_NAVTAB_H

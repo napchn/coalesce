@@ -5,14 +5,14 @@
 
 class CtrlTab : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	CtrlTab(QWidget *parent);
-	~CtrlTab();
+    CtrlTab(QWidget *parent);
+    ~CtrlTab();
 
 private:
-	void RenderUI();
+    void RenderUI();
 };
 
 #endif // CMPNT_CTRL_TAB_H

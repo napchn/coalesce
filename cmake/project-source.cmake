@@ -1,8 +1,8 @@
 set(PROJECT_SOURCES main.cpp)
 set(SRC_DIR_LIST
-    src/cmpnt
-    src/cmn
     src
+    src/cmn
+    src/cmpnt
 )
 
 foreach(SRC_DIR ${SRC_DIR_LIST})
