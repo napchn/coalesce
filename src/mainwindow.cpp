@@ -24,24 +24,21 @@ void MainWindow::RenderUI()
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
 
-    QWidget *central_widget = new QWidget(this);
-    central_widget->setObjectName("central-widget");
+    CREATE_WIDGET_WITH_LAYOUT(this, central_widget, "central-widget", QHBoxLayout)
     this->setCentralWidget(central_widget);
-    QHBoxLayout *layout = new QHBoxLayout(central_widget);
-    layout->setContentsMargins(0, 0, 0, 0);
 
-    CREATE_WIDGET_WITH_LAYOUT(central_widget, left_area, "left-area")
+    CREATE_WIDGET_WITH_LAYOUT(central_widget, left_area, "left-area", QVBoxLayout)
     left_area->setFixedWidth(60);
     NavTab *navtab = new NavTab(central_widget);
     left_area_layout->addWidget(navtab);
 
-    CREATE_WIDGET_WITH_LAYOUT(central_widget, right_area, "right-area")
+    CREATE_WIDGET_WITH_LAYOUT(central_widget, right_area, "right-area", QVBoxLayout)
 
     left_area->setStyleSheet("background-color: #95e1d3");
     right_area->setStyleSheet("background-color: #ffb399");
 
-    layout->addWidget(left_area);
-    layout->addWidget(right_area);
+    central_widget_layout->addWidget(left_area);
+    central_widget_layout->addWidget(right_area);
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)
