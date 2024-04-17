@@ -5,6 +5,7 @@
     QWidget *name = new QWidget(parent);                         \
     name->setObjectName(objname);                                \
     layout *name##_layout = new layout(name);                    \
-    name##_layout->setContentsMargins(0, 0, 0, 0);
+    name##_layout->setContentsMargins(0, 0, 0, 0);               \
+    name##_layout->setSpacing(0);
 
 #endif // CMN_SNIPPET_H
