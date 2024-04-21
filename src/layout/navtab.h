@@ -1,5 +1,5 @@
-#ifndef CMPNT_NAVTAB_H
-#define CMPNT_NAVTAB_H
+#ifndef LAYOUT_NAVTAB_H
+#define LAYOUT_NAVTAB_H
 
 #include <QWidget>
 
@@ -15,4 +15,4 @@ private:
     void RenderUI();
 };
 
-#endif // CMPNT_NAVTAB_H
+#endif // LAYOUT_NAVTAB_H

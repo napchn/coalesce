@@ -1,5 +1,5 @@
-#ifndef CMPNT_CTRL_TAB_H
-#define CMPNT_CTRL_TAB_H
+#ifndef LAYOUT_CTRL_TAB_H
+#define LAYOUT_CTRL_TAB_H
 
 #include <QWidget>
 
@@ -15,4 +15,4 @@ private:
     void RenderUI();
 };
 
-#endif // CMPNT_CTRL_TAB_H
+#endif // LAYOUT_CTRL_TAB_H
