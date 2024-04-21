@@ -1,5 +1,6 @@
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QPainter>
 
 #include "common.h"
 
@@ -15,17 +16,21 @@ CtrlTab::~CtrlTab() {}
 
 void CtrlTab::RenderUI()
 {
-    this->setLayout(new QVBoxLayout(this));
-    CREATE_WIDGET_WITH_LAYOUT(this, ctrltab, "ctrl-tab", QVBoxLayout)
-    this->layout()->addWidget(ctrltab);
-    this->layout()->setContentsMargins(0, 0, 0, 0);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    this->setLayout(layout);
 
     QPushButton *btn3 = new QPushButton("btn3");
     QPushButton *btn4 = new QPushButton("btn4");
-    ctrltab_layout->addStretch();
-    ctrltab_layout->addWidget(btn3);
-    ctrltab_layout->addWidget(btn4);
+    layout->addStretch();
+    layout->addWidget(btn3);
+    layout->addWidget(btn4);
+    layout->setContentsMargins(0, 0, 0, 0);
+}
 
-    // For development
-    ctrltab->setStyleSheet("background-color: #95e1d3;");
+void CtrlTab::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event)
+
+    QPainter painter(this);
+    painter.fillRect(rect(), QColor("#95e1d3"));
 }

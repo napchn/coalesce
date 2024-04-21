@@ -12,6 +12,9 @@ public:
     ~NavTab();
 
 private:
+    void paintEvent(QPaintEvent *event);
+
+private:
     void RenderUI();
 };
 

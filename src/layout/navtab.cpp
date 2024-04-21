@@ -1,5 +1,6 @@
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QPainter>
 
 #include "common.h"
 
@@ -15,17 +16,21 @@ NavTab::~NavTab() {}
 
 void NavTab::RenderUI()
 {
-    this->setLayout(new QVBoxLayout(this));
-    CREATE_WIDGET_WITH_LAYOUT(this, navtab, "nav-tab", QVBoxLayout)
-    this->layout()->addWidget(navtab);
-    this->layout()->setContentsMargins(0, 0, 0, 0);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    this->setLayout(layout);
 
     QPushButton *btn1 = new QPushButton("btn1");
     QPushButton *btn2 = new QPushButton("btn2");
-    navtab_layout->addWidget(btn1);
-    navtab_layout->addWidget(btn2);
-    navtab_layout->addStretch();
+    layout->addWidget(btn1);
+    layout->addWidget(btn2);
+    layout->addStretch();
+    layout->setContentsMargins(0, 0, 0, 0);
+}
 
-    // For development
-    navtab->setStyleSheet("background-color: #eaffd0;");
+void NavTab::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event)
+
+    QPainter painter(this);
+    painter.fillRect(rect(), QColor("#eaffd0"));
 }

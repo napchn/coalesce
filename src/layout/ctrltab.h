@@ -12,6 +12,9 @@ public:
     ~CtrlTab();
 
 private:
+    void paintEvent(QPaintEvent *event);
+
+private:
     void RenderUI();
 };
 
