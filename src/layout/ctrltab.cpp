@@ -22,9 +22,9 @@ void CtrlTab::RenderUI()
 
     QPushButton *btn3 = new QPushButton("btn3");
     QPushButton *btn4 = new QPushButton("btn4");
+    ctrltab_layout->addStretch();
     ctrltab_layout->addWidget(btn3);
     ctrltab_layout->addWidget(btn4);
-    ctrltab_layout->addStretch();
 
     // For development
     ctrltab->setStyleSheet("background-color: #95e1d3;");

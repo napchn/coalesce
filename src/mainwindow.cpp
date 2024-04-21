@@ -1,5 +1,4 @@
 #include <QHBoxLayout>
-#include <QLabel>
 #include <QVBoxLayout>
 
 #include "common.h"

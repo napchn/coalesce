@@ -3,6 +3,7 @@ set(SRC_DIR_LIST
     src
     src/cmn
     src/cmpnt
+    src/layout
 )
 
 foreach(SRC_DIR ${SRC_DIR_LIST})
