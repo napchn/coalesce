@@ -2,4 +2,10 @@
     <qresource>
         <file>img/coalesce.svg</file>
     </qresource>
+    <qresource>
+        <file>img/window/close.svg</file>
+        <file>img/window/maximize.svg</file>
+        <file>img/window/minimize.svg</file>
+        <file>img/window/normalize.svg</file>
+    </qresource>
 </RCC>

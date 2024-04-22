@@ -2,7 +2,8 @@ set(PROJECT_SOURCES main.cpp)
 set(SRC_DIR_LIST
     src
     src/cmn
-    src/cmpnt
+    src/cmpnt/iconbtn
+    src/layout/winctrl
     src/layout
 )
 
