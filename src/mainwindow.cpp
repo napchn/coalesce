@@ -1,3 +1,4 @@
+#include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
@@ -60,6 +61,30 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
     if (centralWidget() && layout()) {
         layout()->setGeometry(centralWidget()->rect());
+    }
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton) {
+        is_dragging = true;
+        drag_position = event->globalPos() - frameGeometry().topLeft();
+        event->accept();
+    }
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    if (is_dragging) {
+        move(event->globalPos() - drag_position);
+        event->accept();
+    }
+}
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton) {
+        is_dragging = false;
+        event->accept();
     }
 }
 
