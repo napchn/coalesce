@@ -1,4 +1,3 @@
-#include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
@@ -12,7 +11,7 @@
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+    : FramelessWindow(parent)
 {
     RenderUI();
     EventBinding();
@@ -24,8 +23,6 @@ void MainWindow::RenderUI()
 {
     setWindowTitle(QStringLiteral("%1").arg(APP_NAME));
     setWindowIcon(QIcon(APP_ICON));
-    setWindowFlags(Qt::FramelessWindowHint);
-    setAttribute(Qt::WA_TranslucentBackground);
 
     CREATE_WIDGET_WITH_LAYOUT(this, central_widget, "central-widget", QHBoxLayout)
     CREATE_WIDGET_WITH_LAYOUT(central_widget, left_area, "left-area", QVBoxLayout)
@@ -53,39 +50,6 @@ void MainWindow::RenderUI()
 void MainWindow::EventBinding()
 {
     connect(topbar, &TopBar::SigWinCtrl, this, &MainWindow::SlotWinCtrl);
-}
-
-void MainWindow::resizeEvent(QResizeEvent *event)
-{
-    QMainWindow::resizeEvent(event);
-
-    if (centralWidget() && layout()) {
-        layout()->setGeometry(centralWidget()->rect());
-    }
-}
-
-void MainWindow::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton) {
-        is_dragging = true;
-        drag_position = event->globalPos() - frameGeometry().topLeft();
-        event->accept();
-    }
-}
-
-void MainWindow::mouseMoveEvent(QMouseEvent *event)
-{
-    if (is_dragging) {
-        move(event->globalPos() - drag_position);
-        event->accept();
-    }
-}
-void MainWindow::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton) {
-        is_dragging = false;
-        event->accept();
-    }
 }
 
 void MainWindow::SlotWinCtrl(WinCtrlType type)
