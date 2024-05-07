@@ -1,4 +1,13 @@
 #include <QHBoxLayout>
+#include <QWindow>
+#include <QScreen>
+
+#pragma comment(lib, "dwmapi")
+#pragma comment(lib, "user32.lib")
+
+#include <windows.h>
+#include <dwmapi.h>
+#include <windowsx.h>
 
 #include "common.h"
 
@@ -11,10 +20,15 @@ WindowCtrl::WindowCtrl(QWidget *parent)
 {
     InitMember();
     RenderUI();
-    EventBinding();
+    EventBinding(parent);
 }
 
 WindowCtrl::~WindowCtrl() {}
+
+IconBtn *WindowCtrl::MaximizeBtn()
+{
+    return maximize_btn;
+}
 
 void WindowCtrl::InitMember()
 {
@@ -39,23 +53,19 @@ void WindowCtrl::RenderUI()
     layout->addWidget(this->close_btn);
 }
 
-void WindowCtrl::EventBinding()
+void WindowCtrl::EventBinding(QWidget *parent)
 {
-    connect(minimize_btn, &QPushButton::clicked, this, [this]() {
-        emit SigWinCtrlBtnClicked(WinCtrlType::Minimize);
-    });
-    connect(maximize_btn, &QPushButton::clicked, this, [this]() {
+    connect(minimize_btn, &QPushButton::clicked, parent, &QWidget::showMinimized);
+    connect(maximize_btn, &QPushButton::clicked, parent, [this, parent]() {
         if (isNormalWindow) {
-            emit SigWinCtrlBtnClicked(WinCtrlType::Maximize);
-            isNormalWindow = false;
+            parent->showMaximized();
             maximize_btn->SetIcon(WINDOW_NORMALIZE_ICON);
+            isNormalWindow = false;
         } else {
-            emit SigWinCtrlBtnClicked(WinCtrlType::Normal);
+            parent->showNormal();
             maximize_btn->SetIcon(WINDOW_MAXIMIZE_ICON);
             isNormalWindow = true;
         }
     });
-    connect(close_btn, &QPushButton::clicked, this, [this]() {
-        emit SigWinCtrlBtnClicked(WinCtrlType::Close);
-    });
+    connect(close_btn, &QPushButton::clicked, parent, &QWidget::close);
 }

@@ -1,13 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "framelesswindow.h"
+#include "coalescewindow.h"
 
-#include "winctrltype.h"
-
-class TopBar;
-
-class MainWindow : public FramelessWindow
+class MainWindow : public CoalesceWindow
 {
     Q_OBJECT
 
@@ -16,13 +12,8 @@ public:
     ~MainWindow();
 
 private:
-    TopBar *topbar;
-
     void RenderUI();
     void EventBinding();
-
-private slots:
-    void SlotWinCtrl(WinCtrlType type);
 };
 
 #endif // MAINWINDOW_H

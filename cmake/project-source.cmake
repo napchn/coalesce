@@ -1,9 +1,10 @@
 set(PROJECT_SOURCES main.cpp)
 set(SRC_DIR_LIST
     src
+    src/api/native
     src/cmn
-    src/cmpnt/framelesswindow
     src/cmpnt/iconbtn
+    src/layout/coalescewindow
     src/layout/winctrl
     src/layout
 )

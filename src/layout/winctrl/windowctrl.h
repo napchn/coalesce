@@ -3,8 +3,6 @@
 
 #include <QWidget>
 
-#include "winctrltype.h"
-
 class IconBtn;
 
 class WindowCtrl : public QWidget
@@ -14,9 +12,7 @@ class WindowCtrl : public QWidget
 public:
     WindowCtrl(QWidget *parent);
     ~WindowCtrl();
-
-signals:
-    void SigWinCtrlBtnClicked(WinCtrlType type);
+    IconBtn *MaximizeBtn();
 
 private:
     IconBtn *minimize_btn;
@@ -26,7 +22,7 @@ private:
 
     void InitMember();
     void RenderUI();
-    void EventBinding();
+    void EventBinding(QWidget *parent);
 };
 
 #endif // LAYOUT_WINCTRL_WINDOW_CTRL_H

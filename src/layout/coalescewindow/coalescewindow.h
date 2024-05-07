@@ -3,13 +3,19 @@
 
 #include <QMainWindow>
 
-class FramelessWindow : public QMainWindow
+class QHBoxLayout;
+class QVBoxLayout;
+class IconBtn;
+class WindowCtrl;
+
+class CoalesceWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    FramelessWindow(QWidget *parent = nullptr);
-    ~FramelessWindow();
+    CoalesceWindow(QWidget *parent = nullptr);
+    ~CoalesceWindow();
+    void AddWidgetToLeft(QWidget *widget, int stretch = 0);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -17,10 +23,14 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event) override;
 
 private:
+    QVBoxLayout *left_area_layout;
+    QHBoxLayout *topbar_layout;
+    QWidget *titlebar;
+    WindowCtrl *win_ctrl;
     bool is_dragging;
     QPoint drag_pos;
-    //QPoint last_mouse_pos;
 
+    void InitMember();
     void RenderUI();
 };
 
